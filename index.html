@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lilio's Bakehouse</title>
+
+<style>
+:root {
+  --dark: #3b2400;
+  --gold: #d8b06a;
+  --light: #fffdf8;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: Georgia, serif;
+}
+
+body {
+  margin: 0;
+  background: #f5f2ed;
+  display: flex;
+  justify-content: center;
+}
+
+.app {
+  width: 100%;
+  max-width: 420px;
+  min-height: 100vh;
+  background: var(--dark);
+  padding: 0px 14px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  margin: 0;              /* removes all outer spacing */
+  padding-top: 0;         /* ensures logo sticks to top */
+}
+
+.logo img {
+  width: 420px;
+  background: transparent;
+}
+
+.card {
+  width: 100%;
+  background: var(--light);
+  border-radius: 18px;
+  padding: 16px;
+  margin-top: 20px;
+}
+
+h2 {
+  text-align: center;
+  margin: 0 0 14px;
+  color: var(--dark);
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #999;
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  border-radius: 24px;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.login-btn {
+  background: var(--gold);
+}
+
+.menu {
+  display: none;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.menu button {
+  background: var(--gold);
+}
+
+.error {
+  color: #b00000;
+  text-align: center;
+  font-size: 14px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+  <div class="logo">
+    <img src="Lilios.jpg" alt="Lilio's Bakehouse">
+  </div>
+
+  <!-- LOGIN -->
+  <div class="card" id="loginCard">
+    <h2>Staff Login</h2>
+    <input type="password" id="password" placeholder="Enter password">
+    <button class="login-btn" onclick="login()">Login</button>
+    <div class="error" id="error"></div>
+  </div>
+
+  <!-- MENU -->
+  <div class="card menu" id="menuCard">
+    <h2>Select Page</h2>
+    <button onclick="go('input.html')">INPUT</button>
+    <button onclick="go('output.html')">OUTPUT</button>
+  </div>
+</div>
+
+<script>
+// SHA-256 hashing
+async function hash(text) {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(text);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+  return Array.from(new Uint8Array(hashBuffer))
+    .map(b => b.toString(16).padStart(2, '0'))
+    .join('');
+}
+
+// 🔐 CHANGE THIS PASSWORD
+const PASSWORD_HASH =
+  "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4"; 
+// = password "1234"
+
+async function login() {
+  const input = document.getElementById("password").value;
+  const hashed = await hash(input);
+
+  if (hashed === PASSWORD_HASH) {
+    sessionStorage.setItem("auth", "true");
+    document.getElementById("loginCard").style.display = "none";
+    document.getElementById("menuCard").style.display = "flex";
+  } else {
+    document.getElementById("error").innerText = "Invalid password";
+  }
+}
+
+// Protect menu on refresh
+if (sessionStorage.getItem("auth") === "true") {
+  document.getElementById("loginCard").style.display = "none";
+  document.getElementById("menuCard").style.display = "flex";
+}
+
+function go(page) {
+  window.location.href = page;
+}
+</script>
+
+</body>
+</html>

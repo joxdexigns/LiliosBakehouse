@@ -1,0 +1,392 @@
+<script>
+if (sessionStorage.getItem("auth") !== "true") {
+  window.location.href = "index.html";
+}
+</script>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Lilio's Bakehouse Input</title>
+
+<style>
+:root {
+  --dark-brown: #3b2400;
+  --mid-brown: #5a3a00;
+  --gold: #d8b06a;
+  --light: #fffdf8;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Georgia", serif;
+}
+
+body {
+  margin: 0;
+  background: #f5f2ed;
+  display: flex;
+  justify-content: center;
+  padding: 30px 0;
+}
+
+.app {
+  width: 360px;
+  background: var(--dark-brown);
+  border-radius: 24px;
+  padding: 0px 20px 20px; /* less top padding, keep sides */
+  color: var(--mid-brown);
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  margin: 0;              /* removes all outer spacing */
+  padding-top: 0;         /* ensures logo sticks to top */
+}
+
+.logo img {
+  width: 360px;
+  background: transparent;
+}
+
+h1 {
+  text-align: center;
+  color: var(--mid-brown);
+  background: var(--light);
+  border-radius: 12px;
+  padding: 6px;
+  margin: 10px 0 14px;
+}
+
+.cardScroll {
+  background: var(--light);
+  border-radius: 16px;
+  padding: 12px;
+  margin-bottom: 12px;
+  height: 400px;
+}
+
+.card {
+  background: var(--light);
+  border-radius: 16px;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+.table-header {
+  display: grid;
+  grid-template-columns: 1fr 80px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.product-list {
+  max-height: 220px;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+.product {
+  display: grid;
+  grid-template-columns: 1fr 80px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.product input {
+  width: 100%;
+  text-align: center;
+  padding: 6px;
+  border-radius: 8px;
+  border: 1px solid var(--mid-brown);
+}
+
+.date-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.date-row input {
+  padding: 6px;
+  border-radius: 8px;
+  border: 1px solid var(--mid-brown);
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+button {
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.cancel {
+  background: #caa15a;
+}
+
+.submit {
+  background: var(--gold);
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+  <div class="logo">
+    <!-- Replace with your real logo -->
+    <img src="Lilios.jpg" alt="Lilio's Bakehouse">
+  </div>
+
+  <h1>INPUT</h1>
+
+  <div class="card">
+    <div class="table-header">
+      <div>Product Name</div>
+      <div>Quantity</div>
+    </div>
+
+    <div class="product-list">
+
+      <div class="product">
+        <div>Pandesal</div>
+        <input id="inputPandesal" type="number" value="0">
+      </div>
+      
+      <div class="product">
+        <div>Monay - L</div>
+        <input id="inputMonayL" type="number" value="0">
+      </div>
+      
+      <div class="product">
+        <div>Monay - M</div>
+        <input id="inputMonayM" type="number" value="0">
+      </div>
+      
+      <div class="product">
+        <div>Monay - S</div>
+        <input id="inputMonayS" type="number" value="0">
+      </div>
+
+      <div class="product">
+        <div>Bans</div>
+        <input id="inputBans" type="number" value="0">
+      </div>
+
+      <div class="product">
+        <div>Putok</div>
+        <input id="inputPutok" type="number" value="0">
+      </div>
+
+      <div class="product">
+        <div>Milky Donut</div>
+        <input id="inputMilkyDonut" type="number" value="0">
+      </div>
+      
+      <div class="product">
+        <div>Tasty</div>
+        <input id="inputTasty" type="number" value="0">
+      </div>
+      
+      <div class="product">
+        <div>Spanish Bread</div>
+        <input id="inputSpanishBread" type="number" value="0">
+      </div>
+      
+      <div class="product">
+        <div>Cheese Bread</div>
+        <input id="inputCheeseBread" type="number" value="0">
+      </div>
+
+      <div class="product">
+        <div>Choco Bread</div>
+        <input id="inputChocoBread" type="number" value="0">
+      </div>
+
+      <div class="product">
+        <div>Pan De Coco</div>
+        <input id="inputPanDeCoco" type="number" value="0">
+      </div>
+
+      <div class="product">
+        <div>Kalihim</div>
+        <input id="inputKalihim" type="number" value="0">
+      </div>
+
+      <div class="product">
+        <div>Ensaymada</div>
+        <input id="inputEnsaymada" type="number" value="0">
+      </div>
+
+      <div class="product">
+        <div>Rainbow</div>
+        <input id="inputRainbow" type="number" value="0">
+      </div>
+
+      <div class="product">
+        <div>Everlasting Coco</div>
+        <input id="inputEverlastingCoco" type="number" value="0">
+      </div>
+
+      <div class="product">
+        <div>Everlasting Choco</div>
+        <input id="inputEverlastingChoco" type="number" value="0">
+      </div>
+
+      <div class="product">
+        <div>Crinkles</div>
+        <input id="inputCrinkles" type="number" value="0">
+      </div>
+
+      <div class="product">
+        <div>Brownies</div>
+        <input id="inputBrownies" type="number" value="0">
+      </div>
+
+      <div class="product">
+        <div>Londries</div>
+        <input id="inputLondries" type="number" value="0">
+      </div>
+
+      <div class="product">
+        <div>Ube Bar</div>
+        <input id="inputUbeBar" type="number" value="0">
+      </div>
+
+      <div class="product">
+        <div>Half Moon</div>
+        <input id="inputHalfMoon" type="number" value="0">
+      </div>
+
+      <div class="product">
+        <div>Lambingan</div>
+        <input id="inputLambingan" type="number" value="0">
+      </div>
+
+      <div class="product">
+        <div>Egg Pie</div>
+        <input id="inputEggPie" type="number" value="0">
+      </div>
+
+      <div class="product">
+        <div>Hopia Ube</div>
+        <input id="inputHopiaUbe" type="number" value="0">
+      </div>
+
+      <div class="product">
+        <div>Hopia Baboy</div>
+        <input id="inputHopiaBaboy" type="number" value="0">
+      </div>
+
+      <div class="product">
+        <div>Pandesiosa</div>
+        <input id="inputPandesiosa" type="number" value="0">
+      </div>
+
+      <div class="product">
+        <div>Pudding</div>
+        <input id="inputPudding" type="number" value="0">
+      </div>
+
+      <div class="product">
+        <div>Kababayan</div>
+        <input id="inputKababayan" type="number" value="0">
+      </div>
+
+      <div class="product">
+        <div>Torta</div>
+        <input id="inputTorta" type="number" value="0">
+      </div>
+    
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="date-row">
+      <div>Production Date</div>
+      <input id="inputProductionDate" type="date">
+    </div>
+    <div class="date-row">
+      <div>Expiration Date</div>
+      <input id="inputExpirationDate" type="date">
+    </div>
+  </div>
+
+  <div class="buttons">
+    <button class="cancel" onclick="goBack()">Cancel</button>
+    <button class="submit" onclick="saveData()">Submit</button>
+  </div>
+</div>
+
+<script>
+function saveData() {
+  fetch("https://script.google.com/macros/s/AKfycbyVMEsa1DbwS550GT14LnxKD-62RnTpKQW3d5UN4m6QfIR63UkJcHAbR4Ksd9JlpUrv/exec", {
+    method: "POST",
+    body: JSON.stringify({
+      prod1: document.getElementById("inputPandesal").value,
+      prod2: document.getElementById("inputMonayL").value,
+      prod3: document.getElementById("inputMonayM").value,
+      prod4: document.getElementById("inputMonayS").value,
+      prod5: document.getElementById("inputBans").value,
+      prod6: document.getElementById("inputPutok").value,
+      prod7: document.getElementById("inputMilkyDonut").value,
+      prod8: document.getElementById("inputTasty").value,
+      prod9: document.getElementById("inputSpanishBread").value,
+      prod10: document.getElementById("inputCheeseBread").value,
+      prod11: document.getElementById("inputChocoBread").value,
+      prod12: document.getElementById("inputPanDeCoco").value,
+      prod13: document.getElementById("inputKalihim").value,
+      prod14: document.getElementById("inputEnsaymada").value,
+      prod15: document.getElementById("inputRainbow").value,
+      prod16: document.getElementById("inputEverlastingCoco").value,
+      prod17: document.getElementById("inputEverlastingChoco").value,
+      prod18: document.getElementById("inputCrinkles").value,
+      prod19: document.getElementById("inputBrownies").value,
+      prod20: document.getElementById("inputLondries").value,
+      prod21: document.getElementById("inputUbeBar").value,
+      prod22: document.getElementById("inputHalfMoon").value,
+      prod23: document.getElementById("inputLambingan").value,
+      prod24: document.getElementById("inputEggPie").value,
+      prod25: document.getElementById("inputHopiaUbe").value,
+      prod26: document.getElementById("inputHopiaBaboy").value,
+      prod27: document.getElementById("inputPandesiosa").value,
+      prod28: document.getElementById("inputPudding").value,
+      prod29: document.getElementById("inputKababayan").value,
+      prod30: document.getElementById("inputTorta").value,
+      productionDate: document.getElementById("inputProductionDate").value,
+      expirationDate: document.getElementById("inputExpirationDate").value
+    })
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.success) {
+      alert("Saved!");
+    } else {
+      alert("Error: " + data.error);
+    }
+  })
+  .catch(() => alert("Connection error"));
+}
+
+function goBack() {
+  window.location.href = "index.html";
+}
+
+</script>
+
+</body>
+</html>
